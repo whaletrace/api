@@ -1,0 +1,88 @@
+// Read https://developers.google.com/protocol-buffers/docs/style
+
+syntax = "proto3";
+
+package types;
+
+import "google/protobuf/timestamp.proto";
+
+/**
+* Represents information about a transaction that occured
+*/
+message Transaction {
+    string hash = 2; //ID(in a form of hash) of the trancasction, that can be used to look up the transaction
+
+    Entity from = 3; // Sender information (empty in cas of issue token action)
+    Entity to = 4; // Receiver information (empty in cas of redeem token action)
+
+    google.protobuf.Timestamp time = 7; // Time of the acceptance of the transaction into the blockchain
+
+    string asset = 9; // Asset of the transaction (example:BTC,ETH,USDT)
+    double size = 10; //Size(value) of the transaction in its native asset
+    double USD_size = 11; //Size(value) of the transaction is USD
+    Token token = 12; // Additional info about the transaction in case it was contract execution
+}
+
+/**
+* Represents additional information about an entity thet receved/sent transaction
+*/
+message Entity {
+    string address = 1; //Address of the entity in the form of an hash 
+    string name = 2; //Name of the entity or Wallet in case of unknown entity
+    string type = 3; //Type of the entity (example: wallet,exchange,gambling)
+    string url = 4; //(optional) url of the entity webpage
+}
+
+/**
+* Extends basic transaction data with information about token transaction 
+*/
+message Token {
+    string name = 1; //Name of the token (example: HuobiToken)
+    string chain = 2; //Blockchain, on which the token has been tracker (example:ETH for ethereum blockchain)
+    string symbol = 3; //Symbol used for the token on the blockchain (example: HT)
+    string action = 4; //Action that has taken place, since with contracts we can track multiple actions (transfer|issue|redeem)
+}
+
+/**
+Empty message
+*/
+message Empty {
+}
+
+
+/**
+* Represents data of request for crypto transactions of some type(Asset) with additional filters
+*/
+message CryptoTypeRequest {
+    string type = 1; //Asset name (example:BTC,ETH,USDT)
+    google.protobuf.Timestamp from = 2;  // Start of the time-frame in which the interested transactions occured
+    google.protobuf.Timestamp to = 3; // End of the time-frame in which the interested transactions occured
+    int64 count = 4; //Number of transaction that should be returned (max 100, default 50 )
+    int64 sizeLimit = 5; //lower USD size limit of the returned transactions (min and default according membership)
+}
+
+/**
+* Represents data of request for crypto transactions of some type(Asset) with no additional filters
+*/
+message CryptoCurrencyType {
+    string type = 1;//Asset name (example:BTC,ETH,USDT)
+}
+
+/**
+* Respresent stream of transaction chunked into an array
+*/
+message TransactionResponse {
+    repeated Transaction data = 1;
+}
+
+/**
+* Server that provides main informations about transactions
+*/
+service TransactionServer {
+    // Obtain top transaction from given time-frame of given asset as a stream
+    rpc TopTransactions (CryptoTypeRequest) returns (stream Transaction);
+    // Obtain historic transactions from given time-frame of given asset a stream
+    rpc HistoricTransactions (CryptoTypeRequest) returns (stream Transaction) ;
+    //subscribe to the newest transactions of given asset
+    rpc SubscribeTransactions (CryptoCurrencyType) returns (stream Transaction);
+}
