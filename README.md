@@ -1,2 +1,2 @@
-# Wahletrace api client libraries
+# Whaletrace api client libraries
 Whaletrace api
