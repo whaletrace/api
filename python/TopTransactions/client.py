@@ -8,7 +8,7 @@ from google.protobuf import timestamp_pb2
 
 import time
 
-SERVER = "SERVER_PATH"
+SERVER = "grpc.whaletrace.com:30000"
 TOKEN = 'YOUR_TOKEN'
 ASSET = "BTC"
 COUNT = 10
@@ -33,7 +33,7 @@ def main():
     # if you want get value you have to use getattr()
     historic_request_kwargs = { 'from': from_time, 'to': to_time, 
                                 'type': ASSET, 'count': COUNT}
-    req = types_pb2.CryptoTypeRequest(**historic_request_kwargs)
+    req = types_pb2.CryptoTransactionRequest(**historic_request_kwargs)
     
     trx_stream = stub.TopTransactions(request=req, metadata=metadata)
     for transaction in trx_stream:

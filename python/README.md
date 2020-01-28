@@ -28,7 +28,7 @@
 	```
 7.  Subscribe to required stream and listen to incoming data  
 	```python
-    req = types_pb2.CryptoCurrencyType(type=ASSET)
+    req = types_pb2.CryptoSubscribeRequest(type=ASSET)
     
     trx_stream = stub.SubscribeTransactions(request=req, metadata=metadata)
     for tweet in tweet_stream:

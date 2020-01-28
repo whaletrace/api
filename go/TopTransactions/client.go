@@ -1,20 +1,21 @@
 package main
 
 import (
-	types ".."
 	"context"
 	"fmt"
-	"time"
 	"io"
+	"time"
+
+	types ".."
 
 	"github.com/golang/protobuf/ptypes"
 	"google.golang.org/grpc"
 )
 
-const Server = "SERVER"  //replace with server connection
-const TOKEN = "YOUR_TOKEN" //replace with your api token
-const ASSET = "BTC" //replace with different asset if interested
-const AMOUNT = 10 //number of returned transactions
+const Server = "grpc.whaletrace.com:30000" //replace with server connection
+const TOKEN = "YOUR_TOKEN"  //replace with your api token
+const ASSET = "BTC"                        //replace with different asset if interested
+const AMOUNT = 10                          //number of returned transactions
 
 type tokenAuth struct {
 	token string
@@ -41,11 +42,11 @@ func main() {
 	client := types.NewTransactionServerClient(conn)
 
 	// create time frame
-	hourAgo, _ := ptypes.TimestampProto(time.Now().Add(-1 * time.Hour))
+	hourAgo, _ := ptypes.TimestampProto(time.Now().Add(-10 * time.Hour))
 	now, _ := ptypes.TimestampProto(time.Now())
 
 	//create crypto request
-	cryptoRequest := &types.CryptoTypeRequest{
+	cryptoRequest := &types.CryptoTransactionRequest{
 		Type:  ASSET,
 		From:  hourAgo,
 		To:    now,

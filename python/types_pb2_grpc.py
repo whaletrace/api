@@ -17,17 +17,17 @@ class TransactionServerStub(object):
     """
     self.TopTransactions = channel.unary_stream(
         '/types.TransactionServer/TopTransactions',
-        request_serializer=types__pb2.CryptoTypeRequest.SerializeToString,
+        request_serializer=types__pb2.CryptoTransactionRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
     self.HistoricTransactions = channel.unary_stream(
         '/types.TransactionServer/HistoricTransactions',
-        request_serializer=types__pb2.CryptoTypeRequest.SerializeToString,
+        request_serializer=types__pb2.CryptoTransactionRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
     self.SubscribeTransactions = channel.unary_stream(
         '/types.TransactionServer/SubscribeTransactions',
-        request_serializer=types__pb2.CryptoCurrencyType.SerializeToString,
+        request_serializer=types__pb2.CryptoSubscribeRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
 
@@ -38,14 +38,14 @@ class TransactionServerServicer(object):
   """
 
   def TopTransactions(self, request, context):
-    """Obtain top transaction from given time-frame of given asset as a stream
+    """Obtain top transaction from given time-frame of given asset as an rpc stream
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def HistoricTransactions(self, request, context):
-    """Obtain historic transactions from given time-frame of given asset a stream
+    """Obtain historic transactions from given time-frame of given asset as an array
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -63,17 +63,17 @@ def add_TransactionServerServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'TopTransactions': grpc.unary_stream_rpc_method_handler(
           servicer.TopTransactions,
-          request_deserializer=types__pb2.CryptoTypeRequest.FromString,
+          request_deserializer=types__pb2.CryptoTransactionRequest.FromString,
           response_serializer=types__pb2.Transaction.SerializeToString,
       ),
       'HistoricTransactions': grpc.unary_stream_rpc_method_handler(
           servicer.HistoricTransactions,
-          request_deserializer=types__pb2.CryptoTypeRequest.FromString,
+          request_deserializer=types__pb2.CryptoTransactionRequest.FromString,
           response_serializer=types__pb2.Transaction.SerializeToString,
       ),
       'SubscribeTransactions': grpc.unary_stream_rpc_method_handler(
           servicer.SubscribeTransactions,
-          request_deserializer=types__pb2.CryptoCurrencyType.FromString,
+          request_deserializer=types__pb2.CryptoSubscribeRequest.FromString,
           response_serializer=types__pb2.Transaction.SerializeToString,
       ),
   }

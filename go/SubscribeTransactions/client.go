@@ -1,18 +1,19 @@
 package main
 
 import (
-	types ".."
 	"context"
 	"fmt"
-	"time"
 	"io"
+	"time"
+
+	types ".."
 
 	"google.golang.org/grpc"
 )
 
-const Server = "SERVER"  //replace with server connection
-const TOKEN = "YOUR_TOKEN" //replace with your api token
-const ASSET = "BTC" //replace with different asset if interested
+const Server = "grpc.whaletrace.com:30000" //replace with server connection
+const TOKEN = "YOUR_TOKEN"                 //replace with your api token
+const ASSET = "BTC"                        //replace with different asset if interested
 
 type tokenAuth struct {
 	token string
@@ -39,8 +40,8 @@ func main() {
 	client := types.NewTransactionServerClient(conn)
 
 	//create crypto request
-	cryptoRequest := &types.CryptoCurrencyType{
-		Type:  ASSET,
+	cryptoRequest := &types.CryptoSubscribeRequest{
+		Type: ASSET,
 	}
 
 	//subscribe to Transactions on server

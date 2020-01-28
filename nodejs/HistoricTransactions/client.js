@@ -2,7 +2,7 @@ const fs = require("fs");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 
-const SERVER = "SERVER_PATH";
+const SERVER = "grpc.whaletrace.com:30000";
 const TOKEN = 'YOUR_TOKEN';
 const PROTO_FILE_PATH = "../../types.proto";
 const ASSET = "BTC"

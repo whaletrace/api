@@ -49,24 +49,14 @@ Empty message
 message Empty {
 }
 
-
 /**
-* Represents data of request for crypto transactions of some type(Asset) with additional filters
+* Represents data of request for crypto transactions of some type(Asset), with optional sizeLimit filter
 */
-message CryptoTypeRequest {
+message CryptoSubscribeRequest {
     string type = 1; //Asset name (example:BTC,ETH,USDT)
-    google.protobuf.Timestamp from = 2;  // Start of the time-frame in which the interested transactions occured
-    google.protobuf.Timestamp to = 3; // End of the time-frame in which the interested transactions occured
-    int64 count = 4; //Number of transaction that should be returned (max 100, default 50 )
     int64 sizeLimit = 5; //lower USD size limit of the returned transactions (min and default according membership)
 }
 
-/**
-* Represents data of request for crypto transactions of some type(Asset) with no additional filters
-*/
-message CryptoCurrencyType {
-    string type = 1;//Asset name (example:BTC,ETH,USDT)
-}
 
 /**
 * Respresent stream of transaction chunked into an array
@@ -76,13 +66,27 @@ message TransactionResponse {
 }
 
 /**
+* Represents data of request for crypto transactions of some type(Asset) with additional filters
+*/
+message CryptoTransactionRequest {
+    string type = 1; //Asset name (example:BTC,ETH,USDT)
+    google.protobuf.Timestamp from = 2;  // Start of the time-frame in which the interested transactions occured
+    google.protobuf.Timestamp to = 3; // End of the time-frame in which the interested transactions occured
+    int64 count = 4; //Number of transaction that should be returned (max 100, default 50 )
+    int64 sizeLimit = 5; //lower USD size limit of the returned transactions (min and default according membership)
+}
+
+
+/**
 * Server that provides main informations about transactions
 */
 service TransactionServer {
-    // Obtain top transaction from given time-frame of given asset as a stream
-    rpc TopTransactions (CryptoTypeRequest) returns (stream Transaction);
-    // Obtain historic transactions from given time-frame of given asset a stream
-    rpc HistoricTransactions (CryptoTypeRequest) returns (stream Transaction) ;
+    // Obtain top transaction from given time-frame of given asset as an rpc stream
+    rpc TopTransactions (CryptoTransactionRequest) returns (stream Transaction);
+    // Obtain historic transactions from given time-frame of given asset as an array
+    rpc HistoricTransactions (CryptoTransactionRequest) returns (stream Transaction) ;
     //subscribe to the newest transactions of given asset
-    rpc SubscribeTransactions (CryptoCurrencyType) returns (stream Transaction);
+    rpc SubscribeTransactions (CryptoSubscribeRequest) returns (stream Transaction);
+
 }
+

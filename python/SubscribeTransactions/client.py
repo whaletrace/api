@@ -6,7 +6,7 @@ import types_pb2
 import types_pb2_grpc
 from google.protobuf import timestamp_pb2
 
-SERVER = "SERVER_PATH"
+SERVER = "grpc.whaletrace.com:30000"
 TOKEN = 'YOUR_TOKEN'
 ASSET = "BTC"
 
@@ -20,7 +20,7 @@ def main():
     metadata = [('authorization', 'Bearer {}'.format(TOKEN))]
 
     #create request
-    req = types_pb2.CryptoCurrencyType(type=ASSET)
+    req = types_pb2.CryptoSubscribeRequest(type=ASSET)
     
     trx_stream = stub.SubscribeTransactions(request=req, metadata=metadata)
     for transaction in trx_stream:
