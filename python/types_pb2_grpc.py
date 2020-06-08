@@ -16,17 +16,17 @@ class TransactionServerStub(object):
       channel: A grpc.Channel.
     """
     self.TopTransactions = channel.unary_stream(
-        '/types.TransactionServer/TopTransactions',
+        '/TransactionServer/TopTransactions',
         request_serializer=types__pb2.CryptoTransactionRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
     self.HistoricTransactions = channel.unary_stream(
-        '/types.TransactionServer/HistoricTransactions',
+        '/TransactionServer/HistoricTransactions',
         request_serializer=types__pb2.CryptoTransactionRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
     self.SubscribeTransactions = channel.unary_stream(
-        '/types.TransactionServer/SubscribeTransactions',
+        '/TransactionServer/SubscribeTransactions',
         request_serializer=types__pb2.CryptoSubscribeRequest.SerializeToString,
         response_deserializer=types__pb2.Transaction.FromString,
         )
@@ -78,5 +78,5 @@ def add_TransactionServerServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'types.TransactionServer', rpc_method_handlers)
+      'TransactionServer', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

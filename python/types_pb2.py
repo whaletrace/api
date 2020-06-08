@@ -18,10 +18,10 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='types.proto',
-  package='types',
+  package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0btypes.proto\x12\x05types\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc9\x01\n\x0bTransaction\x12\x0c\n\x04hash\x18\x02 \x01(\t\x12\x1b\n\x04\x66rom\x18\x03 \x01(\x0b\x32\r.types.Entity\x12\x19\n\x02to\x18\x04 \x01(\x0b\x32\r.types.Entity\x12(\n\x04time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x61sset\x18\t \x01(\t\x12\x0c\n\x04size\x18\n \x01(\x01\x12\x10\n\x08USD_size\x18\x0b \x01(\x01\x12\x1b\n\x05token\x18\x0c \x01(\x0b\x32\x0c.types.Token\"B\n\x06\x45ntity\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x0b\n\x03url\x18\x04 \x01(\t\"D\n\x05Token\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x63hain\x18\x02 \x01(\t\x12\x0e\n\x06symbol\x18\x03 \x01(\t\x12\x0e\n\x06\x61\x63tion\x18\x04 \x01(\t\"\x07\n\x05\x45mpty\"9\n\x16\x43ryptoSubscribeRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x11\n\tsizeLimit\x18\x05 \x01(\x03\"7\n\x13TransactionResponse\x12 \n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x12.types.Transaction\"\x9c\x01\n\x18\x43ryptoTransactionRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12(\n\x04\x66rom\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x63ount\x18\x04 \x01(\x03\x12\x11\n\tsizeLimit\x18\x05 \x01(\x03\x32\xfa\x01\n\x11TransactionServer\x12H\n\x0fTopTransactions\x12\x1f.types.CryptoTransactionRequest\x1a\x12.types.Transaction0\x01\x12M\n\x14HistoricTransactions\x12\x1f.types.CryptoTransactionRequest\x1a\x12.types.Transaction0\x01\x12L\n\x15SubscribeTransactions\x12\x1d.types.CryptoSubscribeRequest\x1a\x12.types.Transaction0\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0btypes.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x01\n\x0bTransaction\x12\x0c\n\x04hash\x18\x02 \x01(\t\x12\x15\n\x04\x66rom\x18\x03 \x01(\x0b\x32\x07.Entity\x12\x13\n\x02to\x18\x04 \x01(\x0b\x32\x07.Entity\x12\n\n\x02id\x18\x05 \x01(\x05\x12(\n\x04time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x61sset\x18\t \x01(\t\x12\x0c\n\x04size\x18\n \x01(\x01\x12\x10\n\x08USD_size\x18\x0b \x01(\x01\x12\x15\n\x05token\x18\x0c \x01(\x0b\x32\x06.Token\"B\n\x06\x45ntity\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x0b\n\x03url\x18\x04 \x01(\t\"D\n\x05Token\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x63hain\x18\x02 \x01(\t\x12\x0e\n\x06symbol\x18\x03 \x01(\t\x12\x0e\n\x06\x61\x63tion\x18\x04 \x01(\t\"\x9c\x01\n\x18\x43ryptoTransactionRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12(\n\x04\x66rom\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x63ount\x18\x04 \x01(\x03\x12\x11\n\tsizeLimit\x18\x05 \x01(\x03\"D\n\x16\x43ryptoSubscribeRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\t\n\x01_\x18\x02 \x01(\t\x12\x11\n\tsizeLimit\x18\x05 \x01(\x03\x32\xd6\x01\n\x11TransactionServer\x12<\n\x0fTopTransactions\x12\x19.CryptoTransactionRequest\x1a\x0c.Transaction0\x01\x12\x41\n\x14HistoricTransactions\x12\x19.CryptoTransactionRequest\x1a\x0c.Transaction0\x01\x12@\n\x15SubscribeTransactions\x12\x17.CryptoSubscribeRequest\x1a\x0c.Transaction0\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -30,62 +30,69 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _TRANSACTION = _descriptor.Descriptor(
   name='Transaction',
-  full_name='types.Transaction',
+  full_name='Transaction',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='hash', full_name='types.Transaction.hash', index=0,
+      name='hash', full_name='Transaction.hash', index=0,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='from', full_name='types.Transaction.from', index=1,
+      name='from', full_name='Transaction.from', index=1,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='to', full_name='types.Transaction.to', index=2,
+      name='to', full_name='Transaction.to', index=2,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='time', full_name='types.Transaction.time', index=3,
+      name='id', full_name='Transaction.id', index=3,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='Transaction.time', index=4,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='asset', full_name='types.Transaction.asset', index=4,
+      name='asset', full_name='Transaction.asset', index=5,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='size', full_name='types.Transaction.size', index=5,
+      name='size', full_name='Transaction.size', index=6,
       number=10, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='USD_size', full_name='types.Transaction.USD_size', index=6,
+      name='USD_size', full_name='Transaction.USD_size', index=7,
       number=11, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='token', full_name='types.Transaction.token', index=7,
+      name='token', full_name='Transaction.token', index=8,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -103,41 +110,41 @@ _TRANSACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=56,
-  serialized_end=257,
+  serialized_start=49,
+  serialized_end=244,
 )
 
 
 _ENTITY = _descriptor.Descriptor(
   name='Entity',
-  full_name='types.Entity',
+  full_name='Entity',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='address', full_name='types.Entity.address', index=0,
+      name='address', full_name='Entity.address', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name', full_name='types.Entity.name', index=1,
+      name='name', full_name='Entity.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='type', full_name='types.Entity.type', index=2,
+      name='type', full_name='Entity.type', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='url', full_name='types.Entity.url', index=3,
+      name='url', full_name='Entity.url', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -155,41 +162,41 @@ _ENTITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=259,
-  serialized_end=325,
+  serialized_start=246,
+  serialized_end=312,
 )
 
 
 _TOKEN = _descriptor.Descriptor(
   name='Token',
-  full_name='types.Token',
+  full_name='Token',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='types.Token.name', index=0,
+      name='name', full_name='Token.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='chain', full_name='types.Token.chain', index=1,
+      name='chain', full_name='Token.chain', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='symbol', full_name='types.Token.symbol', index=2,
+      name='symbol', full_name='Token.symbol', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='action', full_name='types.Token.action', index=3,
+      name='action', full_name='Token.action', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -207,141 +214,48 @@ _TOKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=327,
-  serialized_end=395,
-)
-
-
-_EMPTY = _descriptor.Descriptor(
-  name='Empty',
-  full_name='types.Empty',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=397,
-  serialized_end=404,
-)
-
-
-_CRYPTOSUBSCRIBEREQUEST = _descriptor.Descriptor(
-  name='CryptoSubscribeRequest',
-  full_name='types.CryptoSubscribeRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='type', full_name='types.CryptoSubscribeRequest.type', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='sizeLimit', full_name='types.CryptoSubscribeRequest.sizeLimit', index=1,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=406,
-  serialized_end=463,
-)
-
-
-_TRANSACTIONRESPONSE = _descriptor.Descriptor(
-  name='TransactionResponse',
-  full_name='types.TransactionResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='data', full_name='types.TransactionResponse.data', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=465,
-  serialized_end=520,
+  serialized_start=314,
+  serialized_end=382,
 )
 
 
 _CRYPTOTRANSACTIONREQUEST = _descriptor.Descriptor(
   name='CryptoTransactionRequest',
-  full_name='types.CryptoTransactionRequest',
+  full_name='CryptoTransactionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='type', full_name='types.CryptoTransactionRequest.type', index=0,
+      name='type', full_name='CryptoTransactionRequest.type', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='from', full_name='types.CryptoTransactionRequest.from', index=1,
+      name='from', full_name='CryptoTransactionRequest.from', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='to', full_name='types.CryptoTransactionRequest.to', index=2,
+      name='to', full_name='CryptoTransactionRequest.to', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='count', full_name='types.CryptoTransactionRequest.count', index=3,
+      name='count', full_name='CryptoTransactionRequest.count', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='sizeLimit', full_name='types.CryptoTransactionRequest.sizeLimit', index=4,
+      name='sizeLimit', full_name='CryptoTransactionRequest.sizeLimit', index=4,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -359,89 +273,117 @@ _CRYPTOTRANSACTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=523,
-  serialized_end=679,
+  serialized_start=385,
+  serialized_end=541,
+)
+
+
+_CRYPTOSUBSCRIBEREQUEST = _descriptor.Descriptor(
+  name='CryptoSubscribeRequest',
+  full_name='CryptoSubscribeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='CryptoSubscribeRequest.type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='_', full_name='CryptoSubscribeRequest._', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sizeLimit', full_name='CryptoSubscribeRequest.sizeLimit', index=2,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=543,
+  serialized_end=611,
 )
 
 _TRANSACTION.fields_by_name['from'].message_type = _ENTITY
 _TRANSACTION.fields_by_name['to'].message_type = _ENTITY
 _TRANSACTION.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TRANSACTION.fields_by_name['token'].message_type = _TOKEN
-_TRANSACTIONRESPONSE.fields_by_name['data'].message_type = _TRANSACTION
 _CRYPTOTRANSACTIONREQUEST.fields_by_name['from'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _CRYPTOTRANSACTIONREQUEST.fields_by_name['to'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['Transaction'] = _TRANSACTION
 DESCRIPTOR.message_types_by_name['Entity'] = _ENTITY
 DESCRIPTOR.message_types_by_name['Token'] = _TOKEN
-DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
-DESCRIPTOR.message_types_by_name['CryptoSubscribeRequest'] = _CRYPTOSUBSCRIBEREQUEST
-DESCRIPTOR.message_types_by_name['TransactionResponse'] = _TRANSACTIONRESPONSE
 DESCRIPTOR.message_types_by_name['CryptoTransactionRequest'] = _CRYPTOTRANSACTIONREQUEST
+DESCRIPTOR.message_types_by_name['CryptoSubscribeRequest'] = _CRYPTOSUBSCRIBEREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Transaction = _reflection.GeneratedProtocolMessageType('Transaction', (_message.Message,), {
   'DESCRIPTOR' : _TRANSACTION,
   '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.Transaction)
+  # @@protoc_insertion_point(class_scope:Transaction)
   })
 _sym_db.RegisterMessage(Transaction)
 
 Entity = _reflection.GeneratedProtocolMessageType('Entity', (_message.Message,), {
   'DESCRIPTOR' : _ENTITY,
   '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.Entity)
+  # @@protoc_insertion_point(class_scope:Entity)
   })
 _sym_db.RegisterMessage(Entity)
 
 Token = _reflection.GeneratedProtocolMessageType('Token', (_message.Message,), {
   'DESCRIPTOR' : _TOKEN,
   '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.Token)
+  # @@protoc_insertion_point(class_scope:Token)
   })
 _sym_db.RegisterMessage(Token)
-
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.Empty)
-  })
-_sym_db.RegisterMessage(Empty)
-
-CryptoSubscribeRequest = _reflection.GeneratedProtocolMessageType('CryptoSubscribeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _CRYPTOSUBSCRIBEREQUEST,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.CryptoSubscribeRequest)
-  })
-_sym_db.RegisterMessage(CryptoSubscribeRequest)
-
-TransactionResponse = _reflection.GeneratedProtocolMessageType('TransactionResponse', (_message.Message,), {
-  'DESCRIPTOR' : _TRANSACTIONRESPONSE,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.TransactionResponse)
-  })
-_sym_db.RegisterMessage(TransactionResponse)
 
 CryptoTransactionRequest = _reflection.GeneratedProtocolMessageType('CryptoTransactionRequest', (_message.Message,), {
   'DESCRIPTOR' : _CRYPTOTRANSACTIONREQUEST,
   '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:types.CryptoTransactionRequest)
+  # @@protoc_insertion_point(class_scope:CryptoTransactionRequest)
   })
 _sym_db.RegisterMessage(CryptoTransactionRequest)
+
+CryptoSubscribeRequest = _reflection.GeneratedProtocolMessageType('CryptoSubscribeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CRYPTOSUBSCRIBEREQUEST,
+  '__module__' : 'types_pb2'
+  # @@protoc_insertion_point(class_scope:CryptoSubscribeRequest)
+  })
+_sym_db.RegisterMessage(CryptoSubscribeRequest)
 
 
 
 _TRANSACTIONSERVER = _descriptor.ServiceDescriptor(
   name='TransactionServer',
-  full_name='types.TransactionServer',
+  full_name='TransactionServer',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=682,
-  serialized_end=932,
+  serialized_start=614,
+  serialized_end=828,
   methods=[
   _descriptor.MethodDescriptor(
     name='TopTransactions',
-    full_name='types.TransactionServer.TopTransactions',
+    full_name='TransactionServer.TopTransactions',
     index=0,
     containing_service=None,
     input_type=_CRYPTOTRANSACTIONREQUEST,
@@ -450,7 +392,7 @@ _TRANSACTIONSERVER = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='HistoricTransactions',
-    full_name='types.TransactionServer.HistoricTransactions',
+    full_name='TransactionServer.HistoricTransactions',
     index=1,
     containing_service=None,
     input_type=_CRYPTOTRANSACTIONREQUEST,
@@ -459,7 +401,7 @@ _TRANSACTIONSERVER = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='SubscribeTransactions',
-    full_name='types.TransactionServer.SubscribeTransactions',
+    full_name='TransactionServer.SubscribeTransactions',
     index=2,
     containing_service=None,
     input_type=_CRYPTOSUBSCRIBEREQUEST,

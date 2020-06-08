@@ -2,9 +2,9 @@
 
 syntax = "proto3";
 
-package types;
-
 import "google/protobuf/timestamp.proto";
+
+
 
 /**
 * Represents information about a transaction that occured
@@ -14,7 +14,7 @@ message Transaction {
 
     Entity from = 3; // Sender information (empty in cas of issue token action)
     Entity to = 4; // Receiver information (empty in cas of redeem token action)
-
+    int32 id = 5; //for unique trx identification
     google.protobuf.Timestamp time = 7; // Time of the acceptance of the transaction into the blockchain
 
     string asset = 9; // Asset of the transaction (example:BTC,ETH,USDT)
@@ -43,27 +43,6 @@ message Token {
     string action = 4; //Action that has taken place, since with contracts we can track multiple actions (transfer|issue|redeem)
 }
 
-/**
-Empty message
-*/
-message Empty {
-}
-
-/**
-* Represents data of request for crypto transactions of some type(Asset), with optional sizeLimit filter
-*/
-message CryptoSubscribeRequest {
-    string type = 1; //Asset name (example:BTC,ETH,USDT)
-    int64 sizeLimit = 5; //lower USD size limit of the returned transactions (min and default according membership)
-}
-
-
-/**
-* Respresent stream of transaction chunked into an array
-*/
-message TransactionResponse {
-    repeated Transaction data = 1;
-}
 
 /**
 * Represents data of request for crypto transactions of some type(Asset) with additional filters
@@ -78,6 +57,15 @@ message CryptoTransactionRequest {
 
 
 /**
+* Represents data of request for crypto transactions of some type(Asset) with no additional filters
+*/
+message CryptoSubscribeRequest {
+    string type = 1;//Asset name (example:BTC,ETH,USDT)
+    string _ = 2;
+    int64 sizeLimit = 5; //lower USD size limit of the returned transactions (min and default according membership)
+}
+
+/**
 * Server that provides main informations about transactions
 */
 service TransactionServer {
@@ -87,6 +75,6 @@ service TransactionServer {
     rpc HistoricTransactions (CryptoTransactionRequest) returns (stream Transaction) ;
     //subscribe to the newest transactions of given asset
     rpc SubscribeTransactions (CryptoSubscribeRequest) returns (stream Transaction);
-
+  
 }
 
